@@ -4,37 +4,45 @@
   border-color: black;
   border-width: 5px;
   text-align: center;
+  height: 400px;
+  /* Sets up the flex-box */
   display: flex;
+  /* Sets the space between the bottom of the border and the top of the bar */
+  padding-top: 20px;
+  /* aligns bars to left/right of each other */
+  flex-direction: row;
+  /* Spacing for the bars */
+  justify-content: space-around;
+  /* Aligns with bottom of box */
+  align-items: flex-end;
 }
 
 .bar-padding {
-  margin-left: 10px;
-  margin-right: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+
 }
 
-.red-box {
-  background-color: crimson;
-  color: #fff;
-  padding: 20px;
-}
-
-.bar1 {
-  float: left;
+.bar {
+  display: flex;
+  /* float: left; */
   background:red;
-  /* width: 10%; */
-  height: 300px;
+  width: 20px;
+  /* Centers the bar values */
+  justify-content: center;
 }
+
 .bar2 {
-  float: left;
+  display: flex;
+  /* float: left; */
   background:blue;
   /* width: 10%; */
   height: 300px;
   
 }
 .bar3 {
-  float: left;
+  display: flex;
+  /* float: left; */
   background:green;
   /* width: 10%; */
   height: 50px;

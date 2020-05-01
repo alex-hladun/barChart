@@ -6,6 +6,7 @@
   <title>BarChart Generator</title>
   <!-- <link rel="stylesheet" href="assets/stylesheets/main.css"> -->
   <link rel="stylesheet" type="text/css" href="assets/stylesheets/styles.css">
+  <script type="text/javascript" src="assets/scripts/drawBarChart.js"></script>
 
   <style>
     a.test {
@@ -30,37 +31,14 @@
       <div id = "border" class="box">
       </div>
     </div>
-    <script src="jquery.js"></script>
-    <script>
-      let drawBarChart = function(jQuery, data, options, element) {
-        // alert("welcome my dude");
-        console.log("Loaded");
-        console.log(data);
-        for (let i = 0; i <= data.length - 1; i++) {
-          console.log("Loop")
-          // generates the bars 
-          $("<div id=\"bar"+i+"\" class=\"bar1 bar-padding\"><h4>New Bar</h4></div>").appendTo("#border");
-          // $("\"#bar"+i+"\"").height(50);
-          
-        }
-        $("bar0").attr("height","50%")
-        $("bar0").attr("height","100%")
-      }
-      let data = [1, 2, 3, 4, 5];
+    <script src="jquery.js"></script>      
+      <script>
+      let data = [1, 9, 3, 4, 5, 10, 8];
       let options = [];
       let element = [];
       // $ is an alias for jQuery. This line runs the drawBarChart function
       // when the webpage is loaded and ready. 
       $(document).ready(drawBarChart(jQuery, data, options, element));
-
-        // $("a").addClass("test");
-        // // alert("welcome my dude");
-        // $("h").attr("textContent", "hello")
-      // });
-
-      // window.onload = function () {
-      //   alert("welcome");
-      // };
     </script>
   </article>
 
