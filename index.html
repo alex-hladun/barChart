@@ -4,7 +4,14 @@
 <head>
   <meta charset="utf-8">
   <title>BarChart Generator</title>
-  <link rel="stylesheet" href="/assets/stylesheets/main.css">
+  <!-- <link rel="stylesheet" href="assets/stylesheets/main.css"> -->
+  <link rel="stylesheet" type="text/css" href="assets/stylesheets/styles.css">
+
+  <style>
+    a.test {
+      font-style: italic;
+    }
+  </style>
 </head>
 
 <body>
@@ -16,14 +23,42 @@
   </header>
 
   <article>
-    <h4>This is a test</h4>
+    <h4><a href="http://google.com">This is a test</a></h4>
+    <div>
+      <!-- Put all barchart data within this box -->
+      <h1>Chart Title</h1>
+      <div class="box">
+        <div class="bar1 bar-padding">
+          <h5>
+            Test thingy
+          </h5>
+        </div>
+        <div class="bar2 bar-padding">
+          <h5>
+            Other test thingy
+          </h5>
+        </div>
+        <div class="bar3 bar-padding">
+          <h5>
+            Third test thingy
+          </h5>
+        </div>
+      </div>
+    </div>
     <script src="jquery.js"></script>
     <script>
- 
-    // Your code goes here.
- 
+      // $ is an alias for jQuery
+      $(document).ready(function () {
+        $("a").addClass("test");
+        // alert("welcome my dude");
+        $("h").attr("textContent", "hello")
+      });
+      // window.onload = function () {
+      //   alert("welcome");
+      // };
     </script>
   </article>
+
 
 
 

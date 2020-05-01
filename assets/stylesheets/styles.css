@@ -1,0 +1,45 @@
+
+.box {
+  border-style: solid;
+  border-color: black;
+  border-width: 5px;
+  text-align: center;
+  display: flex;
+}
+
+.bar-padding {
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.red-box {
+  background-color: crimson;
+  color: #fff;
+  padding: 20px;
+}
+
+.bar1 {
+  float: left;
+  background:red;
+  /* width: 10%; */
+  height: 300px;
+}
+.bar2 {
+  float: left;
+  background:blue;
+  /* width: 10%; */
+  height: 300px;
+  
+}
+.bar3 {
+  float: left;
+  background:green;
+  /* width: 10%; */
+  height: 50px;
+}
+.barlabel {
+  color:black;
+  text-align: center;
+}
