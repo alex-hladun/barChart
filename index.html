@@ -27,32 +27,37 @@
     <div>
       <!-- Put all barchart data within this box -->
       <h1>Chart Title</h1>
-      <div class="box">
-        <div class="bar1 bar-padding">
-          <h5>
-            Test thingy
-          </h5>
-        </div>
-        <div class="bar2 bar-padding">
-          <h5>
-            Other test thingy
-          </h5>
-        </div>
-        <div class="bar3 bar-padding">
-          <h5>
-            Third test thingy
-          </h5>
-        </div>
+      <div id = "border" class="box">
       </div>
     </div>
     <script src="jquery.js"></script>
     <script>
-      // $ is an alias for jQuery
-      $(document).ready(function () {
-        $("a").addClass("test");
+      let drawBarChart = function(jQuery, data, options, element) {
         // alert("welcome my dude");
-        $("h").attr("textContent", "hello")
-      });
+        console.log("Loaded");
+        console.log(data);
+        for (let i = 0; i <= data.length - 1; i++) {
+          console.log("Loop")
+          // generates the bars 
+          $("<div id=\"bar"+i+"\" class=\"bar1 bar-padding\"><h4>New Bar</h4></div>").appendTo("#border");
+          // $("\"#bar"+i+"\"").height(50);
+          
+        }
+        $("bar0").attr("height","50%")
+        $("bar0").attr("height","100%")
+      }
+      let data = [1, 2, 3, 4, 5];
+      let options = [];
+      let element = [];
+      // $ is an alias for jQuery. This line runs the drawBarChart function
+      // when the webpage is loaded and ready. 
+      $(document).ready(drawBarChart(jQuery, data, options, element));
+
+        // $("a").addClass("test");
+        // // alert("welcome my dude");
+        // $("h").attr("textContent", "hello")
+      // });
+
       // window.onload = function () {
       //   alert("welcome");
       // };
