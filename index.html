@@ -38,29 +38,19 @@
       <div id = "lower">
         <h1 id = "spacer2"></h1>
         <div id = "xaxis" class="x">
-          <div id="xlabel1" class ="xLabels"><h5 class ="xLabels">Eggs</h5></div>
-          <div id="xlabel1" class ="xLabels"><h5 class ="xLabels">Milk</h5></div>
-          <div id="xlabel1" class ="xLabels"><h5 class ="xLabels">3</h5></div>
-          <div id="xlabel1" class ="xLabels"><h5 class ="xLabels">4</h5></div>
-          <div id="xlabel1" class ="xLabels"><h5 class ="xLabels">5</h5></div>
-          <div id="xlabel1" class ="xLabels"><h5 class ="xLabels">6</h5></div>
-          <div id="xlabel1" class ="xLabels"><h5 class ="xLabels">7</h5></div>
-          <div id="xlabel1" class ="xLabels"><h5 class ="xLabels">8</h5></div>
-          <div id="xlabel1" class ="xLabels"><h5 class ="xLabels">9</h5></div>
-          <div id="xlabel1" class ="xLabels"><h5 class ="xLabels">10</h5></div>
         </div>
       </div>
     </div>
 
     <script src="jquery.js"></script>      
       <script>
-      let data = [[4, 8], 6, [6,1], 12];
-      let options = {width: "700px", height: "400px", barSpacing: "10px", 
-      barLabelPosition: "top", barColour: ["#944BBB"], barLabelColour: ["white"],
-      barLabelFontSize : "15px", 
+      let data = [[4, 6, 5], [6, 4, 7, 8], [6,3], [6,1,1], 12, 13, 12];
+      let options = {width: "700px", height: "400px", barSpacing: "20px", 
+      barLabelPosition: "top", barColour: ["#7B9E87","#B6BE9C","#D2D0BA","#E5C1BD"], barLabelColour: ["white"],
+      barLabelFontSize : "15px", xLabels: ["Eggs","Milk","Sugar","Servings"],
       xAxisTitle: "X-Axis Title", yAxisTitle: "Y-Axis Title", yTickCount: 5, 
       chartTitle: "Chart Title", titleFontSize: 32, titleFontColour: "black",
-      chartBackgroundColour: "#CC92C2", chartBorderColour: "black", borderWidth: "10px"};
+      chartBackgroundColour: "#5E747F", chartBorderColour: "black", borderWidth: "10px"};
 
       let element = [];
 

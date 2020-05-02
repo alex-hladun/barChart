@@ -41,7 +41,6 @@ let drawBarChart = function(jQuery, data, options, element) {
     barGroupVal.push([]);
     barGroupVal[i].push(100*totalArray[i]/barMax+"\%");
   }
-  console.log(barGroupVal);
 
   // Creates an array of individual percentages of each bar-group total.
   let barVal = [];
@@ -51,7 +50,6 @@ let drawBarChart = function(jQuery, data, options, element) {
       barVal[i].push(100*formattedData[i][j]/totalArray[i]+"\%");
     }
   }
-  console.log(barVal)
   
   // Calculate bar width percentages. 
   let barWidth = (100 / (data.length))+"%";
@@ -72,12 +70,23 @@ let drawBarChart = function(jQuery, data, options, element) {
       let barToMake = $("<div id=\"bar"+i+j+"\" class=\"bar\"><h4>"+formattedData[i][j]+"</h4></div>");
       barToMake.css({
         "height": barVal[i][j], 
-        "background" : options.barColour
+        "background" : options.barColour[j]
       });
       // Adds the bars to the "border" <div> element (ie chart area)
       barToMake.appendTo(barDiv);
     }
   }
+
+  // assign x-labels 
+  for (let i = 0; i <= formattedData.length - 1; i ++) {
+    let xlabel = $("<div id=\"xlabel"+i+"\" class=\"xLabels\"><h5 class = \"xLabels\">"+options.xLabels[i]+"</h5></div>")
+    xlabel.css({
+
+    })
+    xlabel.appendTo("#xaxis")
+  }
+
+  // <div id="xlabel1" class ="xLabels"><h5 class ="xLabels">Eggs</h5></div>
 
   // Assigns CSS to the labels
   $("h4").css({
@@ -85,13 +94,13 @@ let drawBarChart = function(jQuery, data, options, element) {
     "color" : options.barLabelColour
   })
 
-
   // Calculate y-label spacing and apply to DOM
   let yTickCount = options.yTickCount;
   let yLabelValues = [];
   for (let i = 0; i <= yTickCount; i++) {
-    yLabelValues.push((i/yTickCount)*barMax)
+    yLabelValues.push(((i/yTickCount)*barMax).toFixed(1))
   }
+
 
   // Assign y-label values into DOM
   for (let i = yTickCount; i>=0; i--) {
