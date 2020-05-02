@@ -5,13 +5,86 @@ let drawBarChart = function(jQuery, data, options, element) {
   let yAxisWidth = "6.25%";
   let areaWidth = "93.75%";
 
-  // find the largest data value 
-  let barMax = data[0];
-  for (let i = 1; i <= data.length - 1; i++) {
-    if (data[i] >= barMax) {
-      barMax = data[i];
+  
+  // Format data into arrays of arrays. Ensures compatibility for stacked bars. 
+  let formattedData = [];
+  for (let i = 0; i <= data.length - 1; i++) {
+    formattedData.push([]);
+    if (typeof data[i] === "number") {
+      formattedData[i].push(data[i]);
+    } else if (typeof data[i] === "object") {
+      for (let j = 0; j <= data[i].length - 1; j++) {
+        formattedData[i].push(data[i][j]);
+      }
     }
   }
+  
+  // Find the largest bar data size. Also creates an array with the sum of
+  // all values in each array. 
+  let totalArray = [];
+  let barMax = 0;
+  for (let i = 0; i <= formattedData.length - 1; i++) {
+    let arraySum = 0;
+    totalArray.push([]);
+    for (let j = 0; j <= formattedData[i].length - 1; j++) {
+      arraySum += formattedData[i][j];
+    }
+    totalArray[i].push(arraySum);
+    if (arraySum >= barMax) {
+      barMax = arraySum;
+    }
+  }
+
+  // Creates array of bar-group values as percentage of the max value
+  let barGroupVal = [];
+  for (let i = 0; i <= formattedData.length - 1; i++) {
+    barGroupVal.push([]);
+    barGroupVal[i].push(100*totalArray[i]/barMax+"\%");
+  }
+  console.log(barGroupVal);
+
+  // Creates an array of individual percentages of each bar-group total.
+  let barVal = [];
+  for (let i = 0; i <= formattedData.length - 1; i++) {
+    barVal.push([]);
+    for (let j = 0; j <= formattedData[i].length - 1; j++) {
+      barVal[i].push(100*formattedData[i][j]/totalArray[i]+"\%");
+    }
+  }
+  console.log(barVal)
+  
+  // Calculate bar width percentages. 
+  let barWidth = (100 / (data.length))+"%";
+
+
+  // Generates the bars, and assigns CSS 
+  for (let i = 0; i <= formattedData.length - 1; i++) {
+    // barDiv is each grouping of bars
+    let barDiv = $("<div id=\"barGroup"+i+"\" class=\"barGroup\"></div>")
+    barDiv.css ({
+      "width": barWidth,
+      "margin-left" : options.barSpacing, 
+      "margin-right" : options.barSpacing,
+      "height" : barGroupVal[i]
+    })
+    barDiv.appendTo("#border")
+    for (let j = 0; j <= formattedData[i].length - 1; j++) {
+      let barToMake = $("<div id=\"bar"+i+j+"\" class=\"bar\"><h4>"+formattedData[i][j]+"</h4></div>");
+      barToMake.css({
+        "height": barVal[i][j], 
+        "background" : options.barColour
+      });
+      // Adds the bars to the "border" <div> element (ie chart area)
+      barToMake.appendTo(barDiv);
+    }
+  }
+
+  // Assigns CSS to the labels
+  $("h4").css({
+    "font-size" : options.barLabelFontSize,
+    "color" : options.barLabelColour
+  })
+
 
   // Calculate y-label spacing and apply to DOM
   let yTickCount = options.yTickCount;
@@ -30,36 +103,6 @@ let drawBarChart = function(jQuery, data, options, element) {
     labelToMake.appendTo("#yaxis");
   }
 
-
-  // Assign bar values as percentage of the max value
-  let barVal = [];
-  for (let i = 0; i <= data.length - 1; i++) {
-    barVal.push(100*data[i]/barMax+"\%");
-  }
-  
-  // Calculate bar width percentages. 
-  let barWidth = (100 / (data.length))+"%";
-
-  for (let i = 0; i <= data.length - 1; i++) {
-    // Generates the bars, and assigns CSS 
-    let barToMake = $("<div id=\"bar"+i+"\" class=\"bar \"><h4>"+data[i]+"</h4></div>");
-    barToMake.css({
-      "height": barVal[i], 
-      "width": barWidth,
-      "margin-left" : options.barSpacing, 
-      "margin-right" : options.barSpacing,
-      "background" : options.barColour
-    });
-    // Adds the bars to the "border" <div> element (ie chart area)
-    barToMake.appendTo("#border");
-  }
-
-  // Assigns CSS to the labels
-  $("h4").css({
-    "font-size" : options.barLabelFontSize,
-    "color" : options.barLabelColour
-    // "justify-content" : center
-  })
 
   // Assigns CSS to the chart area
   $("#border").css({

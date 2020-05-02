@@ -52,6 +52,11 @@
   justify-content: center;
 }
 
+.barGroup {
+  display: flex;
+  flex-direction: column;
+}
+
 .y {
   display: flex;
   width: 60px;
