@@ -27,15 +27,22 @@
     <h4><a href="http://google.com">This is a test</a></h4>
     <div>
       <!-- Put all barchart data within this box -->
-      <h1>Chart Title</h1>
+      <h1 id="title">Chart Title</h1>
       <div id = "border" class="box">
       </div>
     </div>
     <script src="jquery.js"></script>      
       <script>
-      let data = [1, 9, 3, 4, 5, 10, 8];
-      let options = [];
+      let data = [1, 9, 3, 4, 5, 10, 8,30,10,11];
+      let options = {width: "900px", height: "500px", barSpacing: "20px", 
+      barLabelPosition: "top", barColour: ["#944BBB"], barLabelColour: ["white"],
+      barLabelFontSize : "15px", 
+      xAxisTitle: "X-Axis Title", yAxisTitle: "Y-Axis Title", yTickCount: 5, 
+      chartTitle: "Chart Title", titleFontSize: 32, titleFontColour: "black",
+      chartBackgroundColour: "#CC92C2", chartBorderColour: "black", borderWidth: "20 px"};
+
       let element = [];
+
       // $ is an alias for jQuery. This line runs the drawBarChart function
       // when the webpage is loaded and ready. 
       $(document).ready(drawBarChart(jQuery, data, options, element));

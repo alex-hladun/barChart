@@ -1,10 +1,10 @@
 
 .box {
   border-style: solid;
-  border-color: black;
-  border-width: 5px;
+  /* border-color: black;  */
+  /* border-width: 5px; */
   text-align: center;
-  height: 400px;
+  /* height: 400px; */
   /* Sets up the flex-box */
   display: flex;
   /* Sets the space between the bottom of the border and the top of the bar */
@@ -17,37 +17,7 @@
   align-items: flex-end;
 }
 
-.bar-padding {
-  padding-left: 15px;
-  padding-right: 15px;
-
-}
-
 .bar {
   display: flex;
-  /* float: left; */
-  background:red;
-  width: 20px;
-  /* Centers the bar values */
   justify-content: center;
-}
-
-.bar2 {
-  display: flex;
-  /* float: left; */
-  background:blue;
-  /* width: 10%; */
-  height: 300px;
-  
-}
-.bar3 {
-  display: flex;
-  /* float: left; */
-  background:green;
-  /* width: 10%; */
-  height: 50px;
-}
-.barlabel {
-  color:black;
-  text-align: center;
 }
