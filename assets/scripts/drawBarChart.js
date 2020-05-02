@@ -1,4 +1,10 @@
 let drawBarChart = function(jQuery, data, options, element) {
+  // Calculate widths required for border, y-axis, x-axis, title. 
+  let chartWidth = options.width;
+  let chartHeight = options.height;
+  let yAxisWidth = "6.25%";
+  let areaWidth = "93.75%";
+
   // find the largest data value 
   let barMax = data[0];
   for (let i = 1; i <= data.length - 1; i++) {
@@ -6,6 +12,24 @@ let drawBarChart = function(jQuery, data, options, element) {
       barMax = data[i];
     }
   }
+
+  // Calculate y-label spacing and apply to DOM
+  let yTickCount = options.yTickCount;
+  let yLabelValues = [];
+  for (let i = 0; i <= yTickCount; i++) {
+    yLabelValues.push((i/yTickCount)*barMax)
+  }
+
+  // Assign y-label values into DOM
+  for (let i = yTickCount; i>=0; i--) {
+    let labelToMake = $("<div id=\"ytick"+i+"\"><h5 class=\"tickLabels\">"+yLabelValues[i]+"</h4><h5 class=\"tickBox\"></h5></div>")
+    labelToMake.css({
+      "display": "flex",
+      "margin-block-end": "0px !important"
+    })
+    labelToMake.appendTo("#yaxis");
+  }
+
 
   // Assign bar values as percentage of the max value
   let barVal = [];

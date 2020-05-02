@@ -25,21 +25,42 @@
 
   <article>
     <h4><a href="http://google.com">This is a test</a></h4>
-    <div>
-      <!-- Put all barchart data within this box -->
-      <h1 id="title">Chart Title</h1>
-      <div id = "border" class="box">
+    <div id="container">
+      <div id = "upper">
+        <h1 id = "spacer" class="y upper"></h1>
+        <h1 id="title">Chart Title</h1>
+      </div>
+      <div id = "middle">
+        <div id = "yaxis" class="y">
+        </div>
+        <div id = "border" class="box"></div>
+      </div>
+      <div id = "lower">
+        <h1 id = "spacer2"></h1>
+        <div id = "xaxis" class="x">
+          <div id="xlabel1" class ="xLabels"><h5 class ="xLabels">Eggs</h5></div>
+          <div id="xlabel1" class ="xLabels"><h5 class ="xLabels">Milk</h5></div>
+          <div id="xlabel1" class ="xLabels"><h5 class ="xLabels">3</h5></div>
+          <div id="xlabel1" class ="xLabels"><h5 class ="xLabels">4</h5></div>
+          <div id="xlabel1" class ="xLabels"><h5 class ="xLabels">5</h5></div>
+          <div id="xlabel1" class ="xLabels"><h5 class ="xLabels">6</h5></div>
+          <div id="xlabel1" class ="xLabels"><h5 class ="xLabels">7</h5></div>
+          <div id="xlabel1" class ="xLabels"><h5 class ="xLabels">8</h5></div>
+          <div id="xlabel1" class ="xLabels"><h5 class ="xLabels">9</h5></div>
+          <div id="xlabel1" class ="xLabels"><h5 class ="xLabels">10</h5></div>
+        </div>
       </div>
     </div>
+
     <script src="jquery.js"></script>      
       <script>
-      let data = [1, 9, 3, 4, 5, 10, 8,30,10,11];
-      let options = {width: "900px", height: "500px", barSpacing: "20px", 
+      let data = [8, 6, 4, 7, 6, 5, 4, 3, 2, 1];
+      let options = {width: "700px", height: "400px", barSpacing: "10px", 
       barLabelPosition: "top", barColour: ["#944BBB"], barLabelColour: ["white"],
       barLabelFontSize : "15px", 
-      xAxisTitle: "X-Axis Title", yAxisTitle: "Y-Axis Title", yTickCount: 5, 
+      xAxisTitle: "X-Axis Title", yAxisTitle: "Y-Axis Title", yTickCount: 2, 
       chartTitle: "Chart Title", titleFontSize: 32, titleFontColour: "black",
-      chartBackgroundColour: "#CC92C2", chartBorderColour: "black", borderWidth: "20 px"};
+      chartBackgroundColour: "#CC92C2", chartBorderColour: "black", borderWidth: "10px"};
 
       let element = [];
 
