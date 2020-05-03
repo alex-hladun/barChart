@@ -23,30 +23,14 @@
     <h3>Visualize data through a barchart.</h3>
   </header>
 
-  <article>
+  <article id="chart">
     <h4><a href="http://google.com">This is a test</a></h4>
-    <div id="container">
-      <div id = "upper">
-        <h1 id = "spacer" class="y upper"></h1>
-        <h1 id="title">Chart Title</h1>
-      </div>
-      <div id = "middle">
-        <div id = "yaxis" class="y">
-        </div>
-        <div id = "border" class="box"></div>
-      </div>
-      <div id = "lower">
-        <h1 id = "spacer2"></h1>
-        <div id = "xaxis" class="x">
-        </div>
-      </div>
-    </div>
 
     <script src="jquery.js"></script>      
       <script>
-      let data = [[4, 6, 5], [6, 4, 7, 8], [6,3], [6,1,1], 12, 13, 12];
-      let options = {width: "700px", height: "400px", barSpacing: "20px", 
-      barLabelPosition: "top", barColour: ["#7B9E87","#B6BE9C","#D2D0BA","#E5C1BD"], barLabelColour: ["white"],
+      let data = [[4, 6, 5], [6, 4, 7, 8], [6,3], [6,2,2,4,5,6], 12, 13, 12];
+      let options = {width: "800px", height: "600px", barSpacing: "20px", 
+      barLabelPosition: "top", barColour: ["#7B9E87","#B6BE9C","#D2D0BA","#E5C1BD","#A49CBF","#9E7B91","#BEE1E5"], barLabelColour: ["white"],
       barLabelFontSize : "15px", xLabels: ["Eggs","Milk","Sugar","Servings"],
       xAxisTitle: "X-Axis Title", yAxisTitle: "Y-Axis Title", yTickCount: 5, 
       chartTitle: "Chart Title", titleFontSize: 32, titleFontColour: "black",
@@ -65,14 +49,6 @@
 
 
   <footer>&copy; Barchart Generator
-
-    <!-- <nav>
-      <a href="index.html">Home</a>
-      <a href="speakers.html">Speakers</a>
-      <a href="schedule.html">Schedule</a>
-      <a href="venue.html">Venue</a>
-      <a href="register.html">Register</a>
-    </nav> -->
 
   </footer>
 </body>
