@@ -60,7 +60,7 @@ let drawBarChart = function (jQuery, data, options, element) {
     let spacer1 = $("<h1></h1>")
     spacer1.css({
       "display": "flex",
-      "width": yAxisWidth,
+      "width": 2*yAxisWidth+"%",
       "padding-top": "40px",
       "flex-direction": "column",
       "justify-content": "space-between",
@@ -70,10 +70,11 @@ let drawBarChart = function (jQuery, data, options, element) {
     })
     spacer1.appendTo("#upper");
 
+    //spacer to ensure Legend labels are spaced out properly. 
     let spacer3 = $("<h1></h1>")
     spacer3.css({
       "display": "flex",
-      "width": yAxisWidth,
+      "width": 2*yAxisWidth+"%",
       "padding-top": "40px",
       "flex-direction": "column",
       "justify-content": "space-between",
@@ -96,6 +97,7 @@ let drawBarChart = function (jQuery, data, options, element) {
     })
     title.appendTo("#upper");
 
+    // Container for legend entries. Necessary to make sure Legend is centered properly. 
     let legendContainer = $("<div id = \"legendContainer\">");
     legendContainer.css({
       "display": "flex",
@@ -106,20 +108,29 @@ let drawBarChart = function (jQuery, data, options, element) {
     })
     legendContainer.appendTo("#legend");
 
-    
+    // Y-Axis Title
+    let yAxisTitle = $("<div id = \"yAxisTitle\"><h4 class=\"rotated\">"+options.yAxisTitle+"</h4></div>")
+    yAxisTitle.css({
+      "display": "flex",
+      "width": yAxisWidth+"%",
+      // "margin-right" : "10px",
+      "font-size" : options.yAxisTitleFontSize+"px",
+      "align-items": "center"
+    })
+    yAxisTitle.appendTo("#middle"); 
 
     // Y-axis holder
     let yaxis = $("<div id = \"yaxis\"></div>")
     yaxis.css({
       "display": "flex",
-      "width": yAxisWidth,
-      // "height" : areaHeight,
+      "width": yAxisWidth+"%",
       "padding-top": (options.barPaddingTop + options.borderWidth - options.yLabelFontSize)+"px",
       "flex-direction": "column",
       "justify-content": "space-between",
       "align-items": "flex-end"
     })
     yaxis.appendTo("#middle"); 
+
 
     // Chart area holder
     let border = $("<div id = \"border\"></div>")
@@ -128,7 +139,6 @@ let drawBarChart = function (jQuery, data, options, element) {
       "border-color": "black",
       "border-width": "5px",
       "display": "flex",
-      // "height" : areaHeight,
       "width" : areaWidth,
       "background": options.chartBackgroundColour,
       "border-color": options.chartBorderColour,
@@ -144,7 +154,7 @@ let drawBarChart = function (jQuery, data, options, element) {
     let spacer2 = $("<h1 id = \"spacer2\"></h1>")
     spacer2.css({
       "margin-left": "0px",
-      "width": yAxisWidth,
+      "width": 2 * yAxisWidth+"%",
       "align-self": "flex-start",
       "align-items": "flex-start",
       "background-color": "blueviolet"
@@ -158,7 +168,7 @@ let drawBarChart = function (jQuery, data, options, element) {
       "flex-direction": "row",
       "justify-content": "space-around",
       "width": areaWidth,
-      "border-width": "10px",
+      "border-width": "5px",
       "border-color": "transparent",
       "border-style": "solid"
     })
@@ -168,8 +178,9 @@ let drawBarChart = function (jQuery, data, options, element) {
   // Calculate widths required for border, y-axis, x-axis, title. 
   let chartWidth = options.width;
   let chartHeight = options.height;
-  let areaWidth = "93%";
-  let yAxisWidth = "7%";
+  let areaWidth = "90%";
+  // Will be converted to a % later. 
+  let yAxisWidth = 5;
   let titleAxisHeight = "6%";
   let xaxisHeight = "6%";
   let areaHeight = "78%";
@@ -346,7 +357,7 @@ let drawBarChart = function (jQuery, data, options, element) {
       "align-self": "flex-end"
     })
 
-    let tickToMake = $("<h5 class=\"tickBox\"></h5>");
+    let tickToMake = $("<h5 class=\"tickLabels\"></h5>");
     tickToMake.css({
     "background-color": "black",
     "width" : "10px",
