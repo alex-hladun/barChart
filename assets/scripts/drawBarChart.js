@@ -55,8 +55,6 @@ let drawBarChart = function (jQuery, data, options, element) {
     })
     lower.appendTo("#container");
 
-    // change from 60 px to yAxisWidth later. Some of these probably
-    // not necessary, just inherited from the y class. 
     let spacer1 = $("<h1></h1>")
     spacer1.css({
       "display": "flex",
@@ -113,7 +111,7 @@ let drawBarChart = function (jQuery, data, options, element) {
     yAxisTitle.css({
       "display": "flex",
       "width": yAxisWidth+"%",
-      // "margin-right" : "10px",
+      "margin-right" : "5px",
       "font-size" : options.yAxisTitleFontSize+"px",
       "align-items": "center"
     })
@@ -324,7 +322,8 @@ let drawBarChart = function (jQuery, data, options, element) {
   for (let i = 0; i <= formattedData.length - 1; i++) {
     let xlabel = $("<div id=\"xlabel" + i + "\"><h5 class=\"xLabels\">" + options.xLabels[i] + "</h5></div>");
     xlabel.css({
-      "text-align":"center"
+      "text-align":"center",
+      "font-size": options.xLabelFontSize+"px"
     })
     xlabel.appendTo("#xaxis");
   }
