@@ -20,21 +20,42 @@
     <h1>
       <a href="index.html"></a>BarChart Generator</a>
     </h1>
-    <h3>Visualize data through a barchart.</h3>
+    <h3>Visualize data through a single or stacked BarChart.</h3>
+    <!-- <div class="rotated">Text from bottom with working width/height</div> -->
   </header>
 
   <article id="chart">
-    <h4><a href="http://google.com">This is a test</a></h4>
-
     <script src="jquery.js"></script>      
       <script>
-      let data = [[4, 6, 5], [6, 4, 7, 8], [6,3], [6,2,2,4,5,6], 12, 13, 12];
-      let options = {width: "800px", height: "600px", barSpacing: "20px", 
-      barLabelPosition: "top", barColour: ["#7B9E87","#B6BE9C","#D2D0BA","#E5C1BD","#A49CBF","#9E7B91","#BEE1E5"], barLabelColour: ["white"],
-      barLabelFontSize : "15px", xLabels: ["Eggs","Milk","Sugar","Servings"],
-      xAxisTitle: "X-Axis Title", yAxisTitle: "Y-Axis Title", yTickCount: 5, 
-      chartTitle: "Chart Title", titleFontSize: 32, titleFontColour: "black",
-      chartBackgroundColour: "#5E747F", chartBorderColour: "black", borderWidth: "10px"};
+      let data = [[75,75,75,75], [25,25,25,25], [100,100,50,50],[40,60,80,20]];
+      let options = {
+        width: "900px", 
+        height: "600px", 
+        barSpacing: "20px", 
+        barLabelPosition: "top", 
+        barColour: ["#7B9E87","#B6BE9C","#D2D0BA","#E5C1BD","#A49CBF","#9E7B91","#BEE1E5"], 
+        barLegend: ["STEM Students","Arts Students","Psychology Students", "Nursing Students"],
+        barLabelColour: ["white", "white", "white", "white"],
+        barLabelFontSize : "14px", 
+        // can be top, center, or bottom
+        barLabelPosition : "center",
+        // space between bar and top
+        barPaddingTop : 50,
+        legendFontSize : 15,
+        legendBorderSize : 4,
+        legendBoxSize : 10,
+        xLabels: ["2017","2018", "2019", "2020"],
+        yTickCount: 4, 
+        yTickThickness : 5,
+        yLabelFontSize: 15,
+        yLabelDecimalCount: 0,
+        yLabelColour: "black",
+        chartTitle: "Graduating Class Size", 
+        titleFontSize: "30px", 
+        titleFontColour: "black",
+        chartBackgroundColour: "#5E747F", 
+        chartBorderColour: "black", 
+        borderWidth: 5};
 
       let element = [];
 
@@ -44,11 +65,7 @@
     </script>
   </article>
 
-
-
-
-
-  <footer>&copy; Barchart Generator
+  <footer>&copy; Alex Hladun 2020
 
   </footer>
 </body>

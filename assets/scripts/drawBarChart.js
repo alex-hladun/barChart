@@ -1,6 +1,6 @@
 let drawBarChart = function (jQuery, data, options, element) {
 
-
+  // Generates the inital DOM elements required to build the chart. 
   function generateDOMElements(yAxisWidth, areaWidth) {
     // create main container
     let container = $("<div id=\"container\">");
@@ -24,6 +24,18 @@ let drawBarChart = function (jQuery, data, options, element) {
     })
     upper.appendTo("#container");
 
+    // create upper block for Legend
+    let legend = $("<div id = \"legend\">");
+    legend.css({
+      "display": "flex",
+      "flex-direction": "row",
+      "justify-content": "flex-start",
+      "width": options.width,
+      "height" : titleAxisHeight,
+      "margin-block-end": "0px !important"
+    })
+    legend.appendTo("#container");
+
     // create middle block for y-axis and chart area. 
     let middle = $("<div id = \"middle\">");
     middle.css({
@@ -39,13 +51,13 @@ let drawBarChart = function (jQuery, data, options, element) {
     lower.css({
       "display": "flex",
       "width": options.width,
-      "height" : titleAxisHeight,
+      "height" : xaxisHeight,
     })
     lower.appendTo("#container");
 
     // change from 60 px to yAxisWidth later. Some of these probably
     // not necessary, just inherited from the y class. 
-    let spacer1 = $("<h1 id = \"spacer\"></h1>")
+    let spacer1 = $("<h1></h1>")
     spacer1.css({
       "display": "flex",
       "width": yAxisWidth,
@@ -58,16 +70,43 @@ let drawBarChart = function (jQuery, data, options, element) {
     })
     spacer1.appendTo("#upper");
 
+    let spacer3 = $("<h1></h1>")
+    spacer3.css({
+      "display": "flex",
+      "width": yAxisWidth,
+      "padding-top": "40px",
+      "flex-direction": "column",
+      "justify-content": "space-between",
+      "align-items": "flex-end",
+      "margin-left": "0px",
+      "margin-block-end": "0px !important"
+    })
+    spacer3.appendTo("#legend");
+
     // Title for chart
-    let title = $("<h1 id = \"title\">"+options.chartTitle+"</h1>")
+    let title = $("<h1 id = \"title\"><u>"+options.chartTitle+"</u></h1>")
     title.css({
       "display": "flex",
       "width": chartWidth,
-      "color" : "black",
+      "color" : options.titleFontColour,
+      "font-size" : options.titleFontSize,
+      "align-items" : "flex-end",
       "justify-content": "center",
       "margin-block-end": "0px !important"
     })
     title.appendTo("#upper");
+
+    let legendContainer = $("<div id = \"legendContainer\">");
+    legendContainer.css({
+      "display": "flex",
+      "flex-direction": "row",
+      "width" : chartWidth,
+      "justify-content": "center",
+      "margin-block-end": "0px !important"
+    })
+    legendContainer.appendTo("#legend");
+
+    
 
     // Y-axis holder
     let yaxis = $("<div id = \"yaxis\"></div>")
@@ -75,7 +114,7 @@ let drawBarChart = function (jQuery, data, options, element) {
       "display": "flex",
       "width": yAxisWidth,
       // "height" : areaHeight,
-      "padding-top": "40px",
+      "padding-top": (options.barPaddingTop + options.borderWidth - options.yLabelFontSize)+"px",
       "flex-direction": "column",
       "justify-content": "space-between",
       "align-items": "flex-end"
@@ -93,8 +132,8 @@ let drawBarChart = function (jQuery, data, options, element) {
       "width" : areaWidth,
       "background": options.chartBackgroundColour,
       "border-color": options.chartBorderColour,
-      "border-width": options.borderWidth,
-      "padding-top": "60px",
+      "border-width": options.borderWidth + "px",
+      "padding-top": options.barPaddingTop + "px",
       "flex-direction": "row",
       "justify-content": "space-around",
       "align-items": "flex-end",
@@ -112,6 +151,7 @@ let drawBarChart = function (jQuery, data, options, element) {
     })
     spacer2.appendTo("#lower");
 
+    // X-axis holder
     let xaxis = $("<div id=\"xaxis\"></div>");
     xaxis.css({
       "display": "flex",
@@ -128,23 +168,24 @@ let drawBarChart = function (jQuery, data, options, element) {
   // Calculate widths required for border, y-axis, x-axis, title. 
   let chartWidth = options.width;
   let chartHeight = options.height;
-  // let areaWidth = chartWidth - 60;
-  let areaWidth = "90%";
-  let yAxisWidth = "10%";
-  let titleAxisHeight = "12%";
-  let areaHeight = "76%";
-
-    // // Assigns CSS to the chart area
-    // $("#border").css({
-    //   "height": options.height,
-    //   "width": options.width,
-    //   "background": options.chartBackgroundColour,
-    //   "border-color": options.chartBorderColour,
-    //   "border-width": options.borderWidth
-    // })
-
+  let areaWidth = "93%";
+  let yAxisWidth = "7%";
+  let titleAxisHeight = "6%";
+  let xaxisHeight = "6%";
+  let areaHeight = "78%";
 
   generateDOMElements(yAxisWidth, areaWidth);
+  formatData();
+  generateChart;
+
+  function formatData() {
+
+  }
+
+  // Generates and adds chart elements to the DOM. 
+  function generateChart() {
+
+  }
 
   // Format data into arrays of arrays. Ensures compatibility for stacked bars. 
   let formattedData = [];
@@ -175,7 +216,39 @@ let drawBarChart = function (jQuery, data, options, element) {
     }
   }
 
-  // Creates array of bar-group values as percentage of the max value
+  // Create legend and labels/box. 
+  for (let i = 0; i<= options.barLegend.length - 1; i++) {
+    let legendEntry = $("<div id=\"legendEntry"+i+"\"></div>");
+    legendEntry.css({
+      "display": "flex",
+      "justify-content" : "space-between",
+      "align-items" : "center"
+    })
+    let legendText = $("<h4 id=\"legendText"+i+"\">"+options.barLegend[i]+"</h4>");
+    legendText.css({
+      "display" : "flex",
+      "margin-left" : "5px",
+      "font-size" : options.legendFontSize + "px",
+      "margin-right" : "10px"
+    }
+    )
+    let legendBox = $("<h4></h4>");
+    legendBox.css({
+      "background" : options.barColour[i],
+      "display" : "flex",
+      "width" : options.legendBoxSize+"px",
+      "height" : options.legendBoxSize+"px", 
+      "border-style": "solid",
+      "border-color": "black",
+      "border-width": options.legendBorderSize+"px",
+    })
+
+    legendEntry.appendTo(legendContainer);
+    legendBox.appendTo(legendEntry);
+    legendText.appendTo(legendEntry);
+  }
+
+  // Creates array of bar-group values as percentage of the maximum total.
   let barGroupVal = [];
   for (let i = 0; i <= formattedData.length - 1; i++) {
     barGroupVal.push([]);
@@ -194,11 +267,10 @@ let drawBarChart = function (jQuery, data, options, element) {
   // Calculate bar width percentages. 
   let barWidth = (100 / (data.length)) + "%";
 
-
-  // Generates the bars, and assigns CSS 
+  // Generates the bars, and assigns CSS. 
   for (let i = 0; i <= formattedData.length - 1; i++) {
     // barDiv is each grouping of bars
-    let barDiv = $("<div id=\"barGroup" + i + "\" class=\"barGroup\"></div>")
+    let barDiv = $("<div id=\"barGroup" + i + "\"></div>")
     barDiv.css({
       "width": barWidth,
       "margin-left": options.barSpacing,
@@ -207,59 +279,93 @@ let drawBarChart = function (jQuery, data, options, element) {
     })
     barDiv.appendTo("#border")
     for (let j = 0; j <= formattedData[i].length - 1; j++) {
-      let barToMake = $("<div id=\"bar" + i + j + "\" class=\"bar\"><h4>" + formattedData[i][j] + "</h4></div>");
+      let barToMake = $("<div id=\"bar" + i + j + "\"></div>");
+      let barLabelPosition = "flex-start";
+      // assign barLabel position
+      switch (options.barLabelPosition) {
+        case "top": barLabelPosition = "flex-start"; break;
+        case "center": barLabelPosition = "center"; break;
+        case "bottom": barLabelPosition = "flex-end"; break;
+      }
+      let barLabel = $("<h4>"+ formattedData[i][j] + "</h4>");
+      barLabel.css({
+        "font-size": options.barLabelFontSize,
+        "color": options.barLabelColour[j],
+        "align-items": "flex-end",
+        "margin-block-start" : "0px !important",
+        "margin-block-end" : "0px !important",
+      })
+
       barToMake.css({
         "height": barVal[i][j],
-        "background": options.barColour[j]
+        "background": options.barColour[j],
+        "align-items" : barLabelPosition,
+        "display" : "flex",
+        "justify-content": "center",
       });
-      // Adds the bars to the "border" <div> element (ie chart area)
+      // Adds the bars to the "border" <div> element (ie chart area).
       barToMake.appendTo(barDiv);
+      barLabel.appendTo(barToMake);
     }
   }
 
-  // assign x-labels 
+  // Assign labels to x-axis
   for (let i = 0; i <= formattedData.length - 1; i++) {
-    let xlabel = $("<div id=\"xlabel" + i + "\" class=\"xLabels\"><h5 class = \"xLabels\">" + options.xLabels[i] + "</h5></div>")
+    let xlabel = $("<div id=\"xlabel" + i + "\"><h5 class=\"xLabels\">" + options.xLabels[i] + "</h5></div>");
     xlabel.css({
+      "text-align":"center"
     })
-    xlabel.appendTo("#xaxis")
+    xlabel.appendTo("#xaxis");
   }
 
-  // <div id="xlabel1" class ="xLabels"><h5 class ="xLabels">Eggs</h5></div>
-
-  // Assigns CSS to the labels
-  $("h4").css({
-    "font-size": options.barLabelFontSize,
-    "color": options.barLabelColour
-  })
-
-  // Calculate y-label spacing and apply to DOM
+  // Calculate y-label spacing and apply to DOM. Add y-label values. 
   let yTickCount = options.yTickCount;
   let yLabelValues = [];
   for (let i = 0; i <= yTickCount; i++) {
-    yLabelValues.push(((i / yTickCount) * barMax).toFixed(1))
+    yLabelValues.push(((i / yTickCount) * barMax).toFixed(options.yLabelDecimalCount))
   }
-
 
   // Assign y-label values into DOM
   for (let i = yTickCount; i >= 0; i--) {
-    let labelToMake = $("<div id=\"ytick" + i + "\"><h5 class=\"tickLabels\">" + yLabelValues[i] + "</h4><h5 class=\"tickBox\"></h5></div>")
+    let labelToMake = $("<div id=\"ytick" + i + "\"></div>");
     labelToMake.css({
       "display": "flex",
-      "margin-block-end": "0px !important"
+      "align-items" : "center",
+      "margin-block-end": "0px !important",
+      "margin-block-start" : "0 px !important",
+      "font-size" : options.yLabelFontSize,
+      "color" : options.yLabelColour
+    })
+
+    let tickLabel = $("<h4 class=\"tickLabels\"s>" + yLabelValues[i] + "</h4>");
+    tickLabel.css({
+      "display": "flex",
+      "margin-block-end" : "0px !important",
+      "margin-block-start" : "0px !important",
+      "margin-right": "5px",
+      "align-self": "flex-end"
+    })
+
+    let tickToMake = $("<h5 class=\"tickBox\"></h5>");
+    tickToMake.css({
+    "background-color": "black",
+    "width" : "10px",
+    "height" : options.yTickThickness,
+    "align-self" : "flex-end",
+    "margin-block-end" : "0px !important",
+    "margin-block-start" : "0px !important"
     })
     labelToMake.appendTo("#yaxis");
+    tickLabel.appendTo(labelToMake);
+    tickToMake.appendTo(labelToMake);
   }
 
+    // Over-rides User-Agent style-sheet for margin-block label values. 
+  // let $label = $('h4');
+  // $label.attr('style', $label.attr('style') + '; ' + 'margin-block-start: 0px !important');
+  // $label.attr('style', $label.attr('style') + '; ' + 'margin-block-end: 0px !important');
 
-
-
-
+  // let $label2 = $('h5');
+  // $label2.attr('style', $label.attr('style') + '; ' + 'margin-block-start: 0px !important');
+  // $label2.attr('style', $label.attr('style') + '; ' + 'margin-block-end: 0px !important');
 }
-
-// let options = {width: "900px", height: "500px", barSpacing: "20px", 
-// barLabelPosition: "top", barColour: ["#944BBB"], barLabelColour: ["black"],
-// barLabelFontSize : "10px", 
-// xAxisTitle: "X-Axis Title", yAxisTitle: "Y-Axis Title", yTickCount: 5, 
-// chartTitle: "Chart Title", titleFontSize: 32, titleFontColour: "black",
-// chartBackgroundColour: "#CC92C2", chartBorderColour: "black", borderWidth: "20 px"};
