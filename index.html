@@ -7,12 +7,8 @@
   <!-- <link rel="stylesheet" href="assets/stylesheets/main.css"> -->
   <link rel="stylesheet" type="text/css" href="assets/stylesheets/styles.css">
   <script type="text/javascript" src="assets/scripts/drawBarChart.js"></script>
+  <script type="text/javascript" src="assets/scripts/colorSet.js"></script>
 
-  <style>
-    a.test {
-      font-style: italic;
-    }
-  </style>
 </head>
 
 <body>
@@ -21,54 +17,55 @@
       <a href="index.html"></a>BarChart Generator</a>
     </h1>
     <h3>Visualize data through a single or stacked BarChart.</h3>
-    <!-- <div class="rotated">Text from bottom with working width/height</div> -->
+    <div>&nbsp;</div>
   </header>
 
   <article id="chart">
-    <script src="jquery.js"></script>      
-      <script>
-
-      // API: 
-      let data = [[75,75,75,75], [25,25,25,25], [100,100,50,50],[40,60,80,20]];
+    <script src="jquery.js"></script>
+    <script>
+      let data = [[75, 75, 75, 75], [25, 25, 25, 25], [100, 100, 50, 50], [40, 60, 80, 20]];
       let options = {
-        width: "900px", 
-        height: "600px", 
-        barSpacing: "20px", 
-        barLabelPosition: "top", 
-        barColour: ["#7B9E87","#B6BE9C","#D2D0BA","#E5C1BD","#A49CBF","#9E7B91","#BEE1E5"], 
-        barLegend: ["STEM Students","Arts Students","Psychology Students", "Nursing Students"],
+        width: 900,
+        height: 600,
+        barSpacing: 20,
+        barLabelPosition: "top",
+        barColour: ["#7B9E87", "#B6BE9C", "#D2D0BA", "#E5C1BD", "#A49CBF", "#9E7B91", "#BEE1E5"],
+        barLegend: ["STEM Students", "Arts Students", "Psychology Students", "Nursing Students"],
         barLabelColour: ["white", "white", "white", "white"],
-        barLabelFontSize : "14px", 
+        barLabelFontSize: 14,
         // can be top, center, or bottom
-        barLabelPosition : "center",
+        barLabelPosition: "center",
         // space between bar and top
-        barPaddingTop : 50,
-        legendFontSize : 15,
-        legendBorderSize : 4,
-        legendBoxSize : 10,
-        xLabels: ["2017","2018", "2019", "2020"],
+        barPaddingTop: 50,
+        legendFontSize: 15,
+        legendBorderSize: 4,
+        legendBoxSize: 10,
+        xLabels: ["2017", "2018", "2019", "2020"],
         xLabelFontSize: 20,
-        yTickCount: 4, 
-        yTickThickness : 5,
+        yTickCount: 4,
+        yTickThickness: 5,
         yLabelFontSize: 15,
         yLabelDecimalCount: 0,
         yLabelColour: "black",
         yAxisTitle: "Number of Students",
         yAxisTitleFontSize: 17,
-        chartTitle: "Graduating Class Size", 
-        titleFontSize: "30px", 
+        chartTitle: "Graduating Class Size",
+        titleFontSize: 30,
         titleFontColour: "black",
-        chartBackgroundColour: "#5E747F", 
-        chartBorderColour: "black", 
-        borderWidth: 5};
+        chartBackgroundColour: "#5E747F",
+        chartBorderColour: "black",
+        borderWidth: 5
+      };
 
-      let element = [];
+      let element = "#chart";
 
-      // $ is an alias for jQuery. This line runs the drawBarChart function
-      // when the webpage is loaded and ready. 
       $(document).ready(drawBarChart(jQuery, data, options, element));
+
     </script>
   </article>
+
+  <button type="button" id="colorSet1">Color Set 1 "Jaded"</button><button type="button" id="colorSet2">Color Set 2
+    "XXX"</button><button type="button" id="colorSet3">Color Set 3 "TRY"</button>
 
   <footer>&copy; Alex Hladun 2020
 
