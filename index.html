@@ -7,7 +7,6 @@
   <!-- <link rel="stylesheet" href="assets/stylesheets/main.css"> -->
   <link rel="stylesheet" type="text/css" href="assets/stylesheets/styles.css">
   <script type="text/javascript" src="assets/scripts/drawBarChart.js"></script>
-  <script type="text/javascript" src="assets/scripts/colorSet.js"></script>
 
 </head>
 
@@ -23,38 +22,65 @@
   <article id="chart">
     <script src="jquery.js"></script>
     <script>
-      let data = [[75, 75, 75, 75], [25, 25, 25, 25], [100, 100, 50, 50], [40, 60, 80, 20]];
+      // Assign data, separated by commas. Can optionally enter an array for a stacked bar. 
+      let data = [[200,100,200,400,100],[250,250,250,100,150],[175,175,200,300,50], [150,250,350,100,100]];
+      // let data = [[75, 75, 75, 75], [25, 25, 25, 25], [100, 100, 50, 50], [40, 60, 80, 20]];
       let options = {
+        // Width of chart, in px. 
         width: 900,
-        height: 600,
+        // Height of chart, in px. 
+        height: 500,
+        // Space next to each bar, in px. 20 would be a spacing of 40 px between bars, and
+        // 20 px between left/right sides. 
         barSpacing: 20,
-        barLabelPosition: "top",
+        // Sets the bar colors for a stacked bar. Corresponds to order data was assigned. 
         barColour: ["#7B9E87", "#B6BE9C", "#D2D0BA", "#E5C1BD", "#A49CBF", "#9E7B91", "#BEE1E5"],
-        barLegend: ["STEM Students", "Arts Students", "Psychology Students", "Nursing Students"],
-        barLabelColour: ["white", "white", "white", "white"],
+        // Assign the bar legend descriptors, corresponding to the order the data was assigned. 
+        barLegend: ["STEM Students", "Arts Students", "Psychology Students", "Nursing Students", "Education Students"],
+        // Individual bar label colours, corresponding to the order the data was assigned. 
+        barLabelColour: ["White", "white", "white", "white"],
+        // Sets the size of the bar label font. 
         barLabelFontSize: 14,
-        // can be top, center, or bottom
-        barLabelPosition: "center",
-        // space between bar and top
+        // Sets position of in-bar labels. Can be top, center, or bottom.
+        barLabelPosition: "bottom",
+        // Space between bars and top of chart area. 
         barPaddingTop: 50,
-        legendFontSize: 15,
-        legendBorderSize: 4,
+        // Sets the font size for the legend. 
+        legendFontSize: 13,
+        // Sets the border thickness of the legend boxes. 
+        legendBorderSize: 2,
+        // Sets the width/height of the legend box.
         legendBoxSize: 10,
+        // Labels on the x-axis, from left to right. 
         xLabels: ["2017", "2018", "2019", "2020"],
+        // Font size of x-axis labels, in px. 
         xLabelFontSize: 20,
+        // How many ticks above the origin you would like on the y-axis.
         yTickCount: 4,
+        // Thickness, in px, of the ticks on the y-axis. 
         yTickThickness: 5,
+        // Font-size of the y-axis numbers. 
         yLabelFontSize: 15,
+        // How many decimals you would like to include on the y-axis labels. 
         yLabelDecimalCount: 0,
+        // Colour of the y-axis labels. 
         yLabelColour: "black",
+        // Title of the y-axis. 
         yAxisTitle: "Number of Students",
+        // Font size of the y-axis title. 
         yAxisTitleFontSize: 17,
+        // Title of the chart. 
         chartTitle: "Graduating Class Size",
+        // Font size of the title. 
         titleFontSize: 30,
+        // Colour of the title. 
         titleFontColour: "black",
+        // Colour of the chart background. 
         chartBackgroundColour: "#5E747F",
+        // Colour of the chart border. 
         chartBorderColour: "black",
-        borderWidth: 5
+        // Width of the chart border, in px. 
+        borderWidth: 3
       };
 
       let element = "#chart";
@@ -63,9 +89,6 @@
 
     </script>
   </article>
-
-  <button type="button" id="colorSet1">Color Set 1 "Jaded"</button><button type="button" id="colorSet2">Color Set 2
-    "XXX"</button><button type="button" id="colorSet3">Color Set 3 "TRY"</button>
 
   <footer>&copy; Alex Hladun 2020
 

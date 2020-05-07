@@ -13,7 +13,7 @@ let drawBarChart = function (jQuery, data, options, element) {
   let areaHeight = "78%";
   let barVal = [];
 
-  // Generates the inital DOM elements required to build the chart. 
+  // Generates the inital DOM Elements required to build the chart. 
   function generateDOMElements(yAxisWidth, areaWidth) {
     // create main container
     let container = $("<div id=\"container\">");
@@ -68,10 +68,11 @@ let drawBarChart = function (jQuery, data, options, element) {
     })
     lower.appendTo("#container");
 
+    // Creates spacer to ensure title is centered above chart. 
     let spacer1 = $("<h1></h1>")
     spacer1.css({
       "display": "flex",
-      "width": 2 * yAxisWidth + 2 + "%",
+      "width": 2 * yAxisWidth + 3 + "%",
       "padding-top": "40px",
       "flex-direction": "column",
       "justify-content": "space-between",
@@ -81,11 +82,11 @@ let drawBarChart = function (jQuery, data, options, element) {
     })
     spacer1.appendTo("#upper");
 
-    //spacer to ensure Legend labels are spaced out properly. 
+    // Spacer to ensure Legend labels are spaced out properly. 
     let spacer3 = $("<h1></h1>")
     spacer3.css({
       "display": "flex",
-      "width": 2 * yAxisWidth + 2 + "%",
+      "width": 2 * yAxisWidth + 3 + "%",
       "padding-top": "40px",
       "flex-direction": "column",
       "justify-content": "space-between",
@@ -120,12 +121,12 @@ let drawBarChart = function (jQuery, data, options, element) {
     legendContainer.appendTo("#legend");
 
     // Y-Axis Title
-    let yAxisTitle = $("<div id = \"yAxisTitle\"><h4 class=\"rotated\">" + options.yAxisTitle + "</h4></div>")
+    let yAxisTitle = $("<div id = \"yAxisTitle\"><h4 id = \"yAxisText\" class=\"rotated\">" + options.yAxisTitle + "</h4></div>")
     yAxisTitle.css({
       "align-items": "center",
       "display": "flex",
       "width": yAxisWidth + "%",
-      "margin-right": "1%",
+      "margin-right": "2%",
       "font-size": options.yAxisTitleFontSize + "px"
     })
     yAxisTitle.appendTo("#middle");
@@ -141,7 +142,6 @@ let drawBarChart = function (jQuery, data, options, element) {
       "align-items": "flex-end"
     })
     yaxis.appendTo("#middle");
-
 
     // Chart area holder
     let border = $("<div id = \"border\"></div>")
@@ -161,11 +161,17 @@ let drawBarChart = function (jQuery, data, options, element) {
     })
     border.appendTo("#middle");
 
+    // Grabs widths required to space x-axis and title/legend
+    let yAxisTextWidth = parseFloat($("#yAxisText").css("width").replace("px",""));
+    let yAxisBlockWidth = parseFloat($("#yaxis").css("width").replace("px",""));
+    let h4MarginWidth = parseFloat(($("h4").css("margin-block-start")).replace("px",""));
+    let spacerWidth = yAxisTextWidth + yAxisBlockWidth + 2 * h4MarginWidth;
+
     // Lower spacer (to align x-axis labels)
     let spacer2 = $("<h1 id = \"spacer2\"></h1>")
     spacer2.css({
       "margin-left": "0px",
-      "width": 2 * yAxisWidth + 1 + "%",
+      "width": spacerWidth,
       "align-self": "flex-start",
       "align-items": "flex-start",
       "background-color": "blueviolet"
@@ -199,7 +205,6 @@ let drawBarChart = function (jQuery, data, options, element) {
         }
       }
     }
-    console.log("ok")
     return formData
   }
 
@@ -283,7 +288,7 @@ let drawBarChart = function (jQuery, data, options, element) {
           case "center": barLabelPosition = "center"; break;
           case "bottom": barLabelPosition = "flex-end"; break;
         }
-        let barLabel = $("<h4>" + formattedData[i][j] + "</h4>");
+        let barLabel = $("<h4 class=\"barLabels\">" + formattedData[i][j] + "</h4>");
         barLabel.css({
           "font-size": options.barLabelFontSize + "px",
           "color": options.barLabelColour[j],
