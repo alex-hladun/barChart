@@ -147,8 +147,6 @@ let drawBarChart = function (jQuery, data, options, element) {
     let border = $("<div id = \"border\"></div>")
     border.css({
       "border-style": "solid",
-      "border-color": "black",
-      "border-width": "5px",
       "display": "flex",
       "width": areaWidth,
       "background": options.chartBackgroundColour,
@@ -248,7 +246,7 @@ let drawBarChart = function (jQuery, data, options, element) {
     let barGroupVal = [];
     for (let i = 0; i <= formattedData.length - 1; i++) {
       barGroupVal.push([]);
-      barGroupVal[i].push(100 * totalArray[i] / barMax + "\%");
+      barGroupVal[i].push(100 * totalArray[i] / barMax + "%");
     }
     return barGroupVal;
   }
@@ -258,7 +256,7 @@ let drawBarChart = function (jQuery, data, options, element) {
     for (let i = 0; i <= formattedData.length - 1; i++) {
       barVal.push([]);
       for (let j = 0; j <= formattedData[i].length - 1; j++) {
-        barVal[i].push(100 * formattedData[i][j] / totalArray[i] + "\%");
+        barVal[i].push(100 * formattedData[i][j] / totalArray[i] + "%");
       }
     }
     return barVal
