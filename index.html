@@ -13,73 +13,74 @@
 <body>
   <header>
     <h1>
-      <a href="index.html"></a>BarChart Generator</a>
+      <a href="index.html"></a>BarChart Generator - Visualize data through a single or stacked BarChart.</a>
     </h1>
-    <h3>Visualize data through a single or stacked BarChart.</h3>
     <div>&nbsp;</div>
   </header>
 
   <article id="chart">
     <script src="jquery.js"></script>
     <script>
-      // Assign data, separated by commas. Can optionally enter an array for a stacked bar. 
-      let data = [[200,100,200,400,100],[250,250,250,100,150],[175,175,200,300,50], [150,250,350,100,100]];
+      // Assign data, separated by commas. Can optionally enter an array for a stacked bar.
+      let data = [[250, 250, 250, 250, 250], [250, 250, 250, 100, 150], [175, 175, 200, 300, 50], [150, 250, 350, 100, 100]];
       // let data = [[75, 75, 75, 75], [25, 25, 25, 25], [100, 100, 50, 50], [40, 60, 80, 20]];
       let options = {
-        // Width of chart, in px. 
+        // Width of chart, in px.
         width: 900,
-        // Height of chart, in px. 
+        // Height of chart, in px.
         height: 500,
         // Space next to each bar, in px. 20 would be a spacing of 40 px between bars, and
-        // 20 px between left/right sides. 
+        // 20 px between left/right sides.
         barSpacing: 20,
-        // Sets the bar colors for a stacked bar. Corresponds to order data was assigned. 
+        // Sets the bar colors for a stacked bar. Corresponds to order data was assigned.
         barColour: ["#7B9E87", "#B6BE9C", "#D2D0BA", "#E5C1BD", "#A49CBF", "#9E7B91", "#BEE1E5"],
-        // Assign the bar legend descriptors, corresponding to the order the data was assigned. 
+        // Assign the bar legend descriptors, corresponding to the order the data was assigned.
         barLegend: ["STEM Students", "Arts Students", "Psychology Students", "Nursing Students", "Education Students"],
-        // Individual bar label colours, corresponding to the order the data was assigned. 
-        barLabelColour: ["White", "white", "white", "white"],
-        // Sets the size of the bar label font. 
+        // Individual bar label colours, corresponding to the order the data was assigned.
+        barLabelColour: ["White", "white", "white", "white", "white"],
+        // Sets the size of the bar label font.
         barLabelFontSize: 14,
         // Sets position of in-bar labels. Can be top, center, or bottom.
-        barLabelPosition: "bottom",
-        // Space between bars and top of chart area. 
+        barLabelPosition: "center",
+        // Space between bars and top of chart area.
         barPaddingTop: 50,
-        // Sets the font size for the legend. 
+        // Sets the font size for the legend.
         legendFontSize: 13,
-        // Sets the border thickness of the legend boxes. 
+        // Sets the border thickness of the legend boxes.
         legendBorderSize: 2,
         // Sets the width/height of the legend box.
         legendBoxSize: 10,
-        // Labels on the x-axis, from left to right. 
+        // Labels on the x-axis, from left to right.
         xLabels: ["2017", "2018", "2019", "2020"],
-        // Font size of x-axis labels, in px. 
+        // Font size of x-axis labels, in px.
         xLabelFontSize: 20,
         // How many ticks above the origin you would like on the y-axis.
-        yTickCount: 4,
-        // Thickness, in px, of the ticks on the y-axis. 
-        yTickThickness: 5,
-        // Font-size of the y-axis numbers. 
+        yTickCount: 5,
+        // Thickness, in px, of the ticks on the y-axis.
+        yTickThickness: 3,
+        // Font-size of the y-axis numbers.
         yLabelFontSize: 15,
-        // How many decimals you would like to include on the y-axis labels. 
+        // How many decimals you would like to include on the y-axis labels.
         yLabelDecimalCount: 0,
-        // Colour of the y-axis labels. 
+        // Colour of the y-axis labels.
         yLabelColour: "black",
-        // Title of the y-axis. 
+        // Colour of the y-ticks.
+        yTickColour: "black",
+        // Title of the y-axis.
         yAxisTitle: "Number of Students",
-        // Font size of the y-axis title. 
+        // Font size of the y-axis title.
         yAxisTitleFontSize: 17,
-        // Title of the chart. 
+        // Title of the chart.
         chartTitle: "Graduating Class Size",
-        // Font size of the title. 
+        // Font size of the title.
         titleFontSize: 30,
-        // Colour of the title. 
+        // Colour of the title.
         titleFontColour: "black",
-        // Colour of the chart background. 
+        // Colour of the chart background.
         chartBackgroundColour: "#5E747F",
-        // Colour of the chart border. 
+        // Colour of the chart border.
         chartBorderColour: "black",
-        // Width of the chart border, in px. 
+        // Width of the chart border, in px.
         borderWidth: 3
       };
 
@@ -87,8 +88,229 @@
 
       $(document).ready(drawBarChart(jQuery, data, options, element));
 
+      $(document).ready(function () {
+
+        $("#button1").click(function () {
+          $("#container").remove();
+          // Assign data, separated by commas. Can optionally enter an array for a stacked bar.
+          let data = [5, 3, 4, 9, 30, 20, 15];
+          // let data = [[75, 75, 75, 75], [25, 25, 25, 25], [100, 100, 50, 50], [40, 60, 80, 20]];
+          let options = {
+            // Width of chart, in px.
+            width: 700,
+            // Height of chart, in px.
+            height: 500,
+            // Space next to each bar, in px. 20 would be a spacing of 40 px between bars, and
+            // 20 px between left/right sides.
+            barSpacing: 10,
+            // Sets the bar colors for a stacked bar. Corresponds to order data was assigned.
+            barColour: ["#457b9d"],
+            // Assign the bar legend descriptors, corresponding to the order the data was assigned.
+            barLegend: ["Lighthouse Lab Students"],
+            // Individual bar label colours, corresponding to the order the data was assigned.
+            barLabelColour: ["#a8dadc"],
+            // Sets the size of the bar label font.
+            barLabelFontSize: 14,
+            // Sets position of in-bar labels. Can be top, center, or bottom.
+            barLabelPosition: "top",
+            // Space between bars and top of chart area.
+            barPaddingTop: 10,
+            // Sets the font size for the legend.
+            legendFontSize: 13,
+            // Sets the border thickness of the legend boxes.
+            legendBorderSize: 2,
+            // Sets the width/height of the legend box.
+            legendBoxSize: 10,
+            // Labels on the x-axis, from left to right.
+            xLabels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            // Font size of x-axis labels, in px.
+            xLabelFontSize: 15,
+            // How many ticks above the origin you would like on the y-axis.
+            yTickCount: 6,
+            // Thickness, in px, of the ticks on the y-axis.
+            yTickThickness: 8,
+            // Colour of the y-ticks.
+            yTickColour: "#1d3557",
+            // Font-size of the y-axis numbers.
+            yLabelFontSize: 15,
+            // How many decimals you would like to include on the y-axis labels.
+            yLabelDecimalCount: 0,
+            // Colour of the y-axis labels.
+            yLabelColour: "#1d3557",
+            // Title of the y-axis.
+            yAxisTitle: "Number of Students",
+            // Font size of the y-axis title.
+            yAxisTitleFontSize: 17,
+            // Title of the chart.
+            chartTitle: "Students' Favorite Day of the Week",
+            // Font size of the title.
+            titleFontSize: 20,
+            // Colour of the title.
+            titleFontColour: "black",
+            // Colour of the chart background.
+            chartBackgroundColour: "#f1faee",
+            // Colour of the chart border.
+            chartBorderColour: "#1d3557",
+            // Width of the chart border, in px.
+            borderWidth: 7
+          };
+
+          drawBarChart(jQuery, data, options, element);
+
+        });
+
+        $("#button2").click(function () {
+          $("#container").remove();
+          // Assign data, separated by commas. Can optionally enter an array for a stacked bar.
+          // "Rent", "Groceries", "Phone Bill", "Entertainment", "Car Expenses", "Investments"]
+          let data = [[500, 300, 200, 300, 100, 100], [600, 350, 200, 75, 100], [450, 200, 50, 50, 50, 700], [600, 250, 300, 150, 100, 75], [700, 200, 100, 100, 125, 125]]
+          // let data = [[75, 75, 75, 75], [25, 25, 25, 25], [100, 100, 50, 50], [40, 60, 80, 20]];
+          let options = {
+            // Width of chart, in px.
+            width: 800,
+            // Height of chart, in px.
+            height: 500,
+            // Space next to each bar, in px. 20 would be a spacing of 40 px between bars, and
+            // 20 px between left/right sides.
+            barSpacing: 30,
+            // Sets the bar colors for a stacked bar. Corresponds to order data was assigned.
+            barColour: ["#d8e2dc", "#ffe5d9", "#ffcad4", "#f4acb7", "#9d8189", "#9E7B91", "#BEE1E5"],
+            // Assign the bar legend descriptors, corresponding to the order the data was assigned.
+            barLegend: ["Rent", "Groceries", "Phone Bill", "Entertainment", "Car Expenses", "Investments"],
+            // Individual bar label colours, corresponding to the order the data was assigned.
+            barLabelColour: ["black", "black", "black", "black", "black", "black"],
+            // Sets the size of the bar label font.
+            barLabelFontSize: 15,
+            // Sets position of in-bar labels. Can be top, center, or bottom.
+            barLabelPosition: "center",
+            // Space between bars and top of chart area.
+            barPaddingTop: 50,
+            // Sets the font size for the legend.
+            legendFontSize: 13,
+            // Sets the border thickness of the legend boxes.
+            legendBorderSize: 2,
+            // Sets the width/height of the legend box.
+            legendBoxSize: 10,
+            // Labels on the x-axis, from left to right.
+            xLabels: ["Frank", "Martha", "Jim", "Sally", "Tim"],
+            // Font size of x-axis labels, in px.
+            xLabelFontSize: 20,
+            // How many ticks above the origin you would like on the y-axis.
+            yTickCount: 6,
+            // Thickness, in px, of the ticks on the y-axis.
+            yTickThickness: 3,
+            // Colour of the y-ticks.
+            yTickColour: "black",
+            // Font-size of the y-axis numbers.
+            yLabelFontSize: 15,
+            // How many decimals you would like to include on the y-axis labels.
+            yLabelDecimalCount: 0,
+            // Colour of the y-axis labels.
+            yLabelColour: "black",
+            // Title of the y-axis.
+            yAxisTitle: "Average Monthly Expenses ($)",
+            // Font size of the y-axis title.
+            yAxisTitleFontSize: 17,
+            // Title of the chart.
+            chartTitle: "Average Monthly Expenses for Students",
+            // Font size of the title.
+            titleFontSize: 30,
+            // Colour of the title.
+            titleFontColour: "black",
+            // Colour of the chart background.
+            chartBackgroundColour: "#81879E",
+            // Colour of the chart border.
+            chartBorderColour: "black",
+            // Width of the chart border, in px.
+            borderWidth: 3
+          };
+
+          drawBarChart(jQuery, data, options, element);
+
+
+        });
+
+        $("#button3").click(function () {
+          $("#container").remove();
+          // Assign data, separated by commas. Can optionally enter an array for a stacked bar.
+          let data = [[200, 100, 200, 400, 100], [250, 250, 250, 100, 150], [175, 175, 200, 300, 50], [150, 250, 350, 100, 100]];
+          // let data = [[75, 75, 75, 75], [25, 25, 25, 25], [100, 100, 50, 50], [40, 60, 80, 20]];
+          let options = {
+            // Width of chart, in px.
+            width: 900,
+            // Height of chart, in px.
+            height: 500,
+            // Space next to each bar, in px. 20 would be a spacing of 40 px between bars, and
+            // 20 px between left/right sides.
+            barSpacing: 20,
+            // Sets the bar colors for a stacked bar. Corresponds to order data was assigned.
+            barColour: ["#7B9E87", "#B6BE9C", "#D2D0BA", "#E5C1BD", "#A49CBF", "#9E7B91", "#BEE1E5"],
+            // Assign the bar legend descriptors, corresponding to the order the data was assigned.
+            barLegend: ["STEM Students", "Arts Students", "Psychology Students", "Nursing Students", "Education Students"],
+            // Individual bar label colours, corresponding to the order the data was assigned.
+            barLabelColour: ["White", "white", "white", "white", "white"],
+            // Sets the size of the bar label font.
+            barLabelFontSize: 14,
+            // Sets position of in-bar labels. Can be top, center, or bottom.
+            barLabelPosition: "center",
+            // Space between bars and top of chart area.
+            barPaddingTop: 50,
+            // Sets the font size for the legend.
+            legendFontSize: 13,
+            // Sets the border thickness of the legend boxes.
+            legendBorderSize: 2,
+            // Sets the width/height of the legend box.
+            legendBoxSize: 10,
+            // Labels on the x-axis, from left to right.
+            xLabels: ["2017", "2018", "2019", "2020"],
+            // Font size of x-axis labels, in px.
+            xLabelFontSize: 20,
+            // How many ticks above the origin you would like on the y-axis.
+            yTickCount: 5,
+            // Thickness, in px, of the ticks on the y-axis.
+            yTickThickness: 3,
+            // Font-size of the y-axis numbers.
+            yLabelFontSize: 15,
+            // How many decimals you would like to include on the y-axis labels.
+            yLabelDecimalCount: 0,
+            // Colour of the y-axis labels.
+            yLabelColour: "black",
+            // Colour of the y-ticks.
+            yTickColour: "black",
+            // Title of the y-axis.
+            yAxisTitle: "Number of Students",
+            // Font size of the y-axis title.
+            yAxisTitleFontSize: 17,
+            // Title of the chart.
+            chartTitle: "Graduating Class Size",
+            // Font size of the title.
+            titleFontSize: 30,
+            // Colour of the title.
+            titleFontColour: "black",
+            // Colour of the chart background.
+            chartBackgroundColour: "#5E747F",
+            // Colour of the chart border.
+            chartBorderColour: "black",
+            // Width of the chart border, in px.
+            borderWidth: 3
+          };
+
+          drawBarChart(jQuery, data, options, element);
+
+        });
+
+      });
+
     </script>
   </article>
+
+  <h4>Click one of the follow styles to see examples:</h4>
+  <button id="button1">Example 1</button>
+  <button id="button2">Example 2</button>
+  <button id="button3">Example 3</button>
+
+  <div>&nbsp;</div>
+
 
   <footer>&copy; Alex Hladun 2020
 
