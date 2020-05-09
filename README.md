@@ -95,13 +95,14 @@ You will supply:
   ````
 
 # Known Issues/Bugs
-* None at the moment. 
+* Can only render one graph into page at a time as some of the DOM elements would share ID's with multiple charts. 
 
 # Roadmap / Features to be added
-* Add support for better number formatiing for bar and axis labels. 
+* Render multiple charts in one page. 
+* Add support for better number formatting for bar and axis labels (ie add $ or %). 
 * Add borders for the bars. 
 * Align Y-axis labels so they are centered with ticks. 
-* Add animations
+* Add animations.
 
 # External resources
 The following tutorials/resources were used to make this project:
