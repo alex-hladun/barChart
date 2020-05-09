@@ -306,8 +306,6 @@ let drawBarChart = function (jQuery, data, options, element) {
     // console.log(yLabelHeight);
     let firstYLabelHeight = (0) + "%";
 
-
-
     // Assign y-label values into DOM
     for (let i = yTickCount; i >= 1; i--) {
       let labelToMake = $("<div id=\"ytick" + i + "\"></div>");

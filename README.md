@@ -1,9 +1,9 @@
 ## barChart
 A library to create bar charts using JQuery, JS, HTML &amp; CSS. 
 
-Add a README.md file with the following information to your project. The README should be in Markdown format:
 # About
-Give some context to what your project is for
+This library will take your data and format it into a simple, beautiful bar-chart for sharing and presentations. 
+
 #Screenshots
 Example Screenshots (embedded within the readme as image tags)
 List the API functions that you would expect a user to use
