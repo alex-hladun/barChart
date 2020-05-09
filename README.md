@@ -5,6 +5,8 @@ A library to create bar charts using JQuery, JS, HTML &amp; CSS.
 This library will take your data and format it into a simple, beautiful bar-chart for sharing and presentations. 
 
 #Screenshots
+![Example Screenshot](/assets/screenshots/screenshot.png)
+
 Example Screenshots (embedded within the readme as image tags)
 List the API functions that you would expect a user to use
 
