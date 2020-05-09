@@ -96,6 +96,7 @@ You will supply:
 
 # Known Issues/Bugs
 * Can only render one graph into page at a time as some of the DOM elements would share ID's with multiple charts. 
+* Some of the y-axis ticks may be different sizes. 
 
 # Roadmap / Features to be added
 * Render multiple charts in one page. 
