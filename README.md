@@ -1,5 +1,5 @@
 ## barChart
-A library to create bar charts using JQuery, JS, HTML &amp; CSS. 
+A library to create bar charts using JQuery, JS, HTML &amp; CSS. See it in action [here](https://alex-hladun.github.io/barChart/).
 
 # About
 This library will take your data and format it into a simple, beautiful bar-chart for sharing and presentations.
@@ -8,8 +8,6 @@ This library will take your data and format it into a simple, beautiful bar-char
 For proper functionality, the following is required in your html where you would like to render the chart: 
 * A CSS style-reset, such as the one in /assets/stylesheets/styles.css
   * It is important that the margin, padding, and border are set to 0 in order to avoid chart-rendering problems.
-* Call the API using:
-  * ````
 
 # Screenshots
 ![Example Screenshot](/assets/screenshots/screenshot.png)
@@ -30,7 +28,10 @@ You will supply:
   * ie "#body"
 
 # Features/Options
-The javascript object should be formatted as follows with the following options: 
+* This library allows you to make single or stacked bar-charts. 
+* Can customize most attributes like widths, colors, thickness, chart size, bar spacing, axis attributes, etc. 
+
+* The javascript object should be formatted as follows with the following options: 
   ````
   let options = {
     // Width of chart, in px.
@@ -94,8 +95,13 @@ The javascript object should be formatted as follows with the following options:
   ````
 
 # Known Issues/Bugs
+* None at the moment. 
 
-# Roadmap
+# Roadmap / Features to be added
+* Add support for better number formatiing for bar and axis labels. 
+* Add borders for the bars. 
+* Align Y-axis labels so they are centered with ticks. 
+* Add animations
 
 # External resources
 The following tutorials/resources were used to make this project:
